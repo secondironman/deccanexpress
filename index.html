@@ -206,7 +206,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter:invert(0.7) sepia
 .footer { margin-top:24px; font-size:12px; color:rgba(245,232,204,0.3); text-align:center; letter-spacing:1px; }
 </style>
 </head>
-<body>
+<body onload="saveScriptUrl()">
 
 <!-- SENDING OVERLAY -->
 <div class="sending-overlay" id="sendingOverlay">
@@ -429,7 +429,7 @@ const LS_KEY = 'deccan_script_url';
 let SCRIPT_URL = localStorage.getItem(LS_KEY) || '';
 
 function saveScriptUrl() {
-  const val = document.getElementById('scriptUrl').value.trim();
+  const val = 'https://script.google.com/macros/s/AKfycbya9-daOL8iJ_5Viq6sL98ywnn1a8_1fND5ShFSvkX4n15ykbYZRwC2H_BQSdCePOq0Hw/exec'; //document.getElementById('scriptUrl').value.trim();
   const status = document.getElementById('urlStatus');
   if (!val.startsWith('https://script.google.com/macros/s/')) {
     status.textContent = '❌ That doesn\'t look like a valid Apps Script URL. It should start with https://script.google.com/macros/s/…';
