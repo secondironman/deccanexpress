@@ -396,7 +396,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter:invert(0.7) sepia
 
   <!-- SUBMIT -->
   <div class="card-section">
-    <button class="submit-btn" id="submitBtn" onclick="submitOrder()">🍛 &nbsp; Place My Pre-Order</button>
+    <button class="submit-btn" id="submitBtn" onclick="saveScriptUrl(), submitOrder()">🍛 &nbsp; Place My Pre-Order</button>
     <p style="text-align:center;font-size:12px;color:rgba(245,232,204,0.35);margin-top:10px;">Orders confirmed only after Revolut payment is received</p>
   </div>
 
@@ -425,27 +425,32 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter:invert(0.7) sepia
 // ══════════════════════════════════════════
 //  CONFIG — loaded from localStorage
 // ══════════════════════════════════════════
-const LS_KEY = 'https://script.google.com/macros/s/AKfycbya9-daOL8iJ_5Viq6sL98ywnn1a8_1fND5ShFSvkX4n15ykbYZRwC2H_BQSdCePOq0Hw/exec';
+const LS_KEY = 'deccan_script_url';
 let SCRIPT_URL = localStorage.getItem(LS_KEY) || '';
 
 function saveScriptUrl() {
-  const val = document.getElementById('scriptUrl').value.trim();
+  const val = 'https://script.google.com/macros/s/AKfycbya9-daOL8iJ_5Viq6sL98ywnn1a8_1fND5ShFSvkX4n15ykbYZRwC2H_BQSdCePOq0Hw/exec'; //document.getElementById('scriptUrl').value.trim();
   const status = document.getElementById('urlStatus');
   if (!val.startsWith('https://script.google.com/macros/s/')) {
     status.textContent = '❌ That doesn\'t look like a valid Apps Script URL. It should start with https://script.google.com/macros/s/…';
     status.className = 'url-status bad';
     return;
   }
-  SCRIPT_URL = val;
-  localStorage.setItem(LS_KEY, val);
-  status.textContent = '✅ URL saved! Orders will now flow into your Google Sheet.';
-  status.className = 'url-status ok';
+  if(SCRIPT_URL) {
+    alert('url present. use existing'); 
+  } else {
+	alert('url not present. Save'); 
+	SCRIPT_URL = val;
+	  localStorage.setItem(LS_KEY, val);
+	  status.textContent = '✅ URL saved! Orders will now flow into your Google Sheet.';
+	  status.className = 'url-status ok';
+  }
 }
 
 // Pre-fill if already saved
 window.addEventListener('DOMContentLoaded', () => {
   if (SCRIPT_URL) {
-    alert('listner activated - saving url');
+    alert('Event Listener');
     document.getElementById('scriptUrl').value = SCRIPT_URL;
     document.getElementById('urlStatus').textContent = '✅ Google Sheet connected.';
     document.getElementById('urlStatus').className = 'url-status ok';
