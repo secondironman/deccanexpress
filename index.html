@@ -228,7 +228,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter:invert(0.7) sepia
 <!-- ══════════════════════════════════════════════
      GOOGLE SHEETS SETUP PANEL
      ══════════════════════════════════════════════ -->
-<div class="setup-banner">
+<!--div class="setup-banner">
   <h3>⚙️ One-Time Google Sheets Setup</h3>
   <ol class="setup-steps">
     <li>
@@ -254,7 +254,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter:invert(0.7) sepia
     <button class="save-url-btn" onclick="saveScriptUrl()">Save URL</button>
   </div>
   <div class="url-status" id="urlStatus"></div>
-</div>
+</div-->
 
 <!-- DEADLINE -->
 <div class="deadline-banner" id="deadlineBanner">
@@ -436,21 +436,17 @@ function saveScriptUrl() {
     status.className = 'url-status bad';
     return;
   }
-  if(SCRIPT_URL) {
-    alert('url present. use existing'); 
-  } else {
-	alert('url not present. Save'); 
+  if(!SCRIPT_URL) {
 	SCRIPT_URL = val;
-	  localStorage.setItem(LS_KEY, val);
-	  status.textContent = '✅ URL saved! Orders will now flow into your Google Sheet.';
-	  status.className = 'url-status ok';
+	localStorage.setItem(LS_KEY, val);
+	status.textContent = '✅ URL saved! Orders will now flow into your Google Sheet.';
+	status.className = 'url-status ok';
   }
 }
 
 // Pre-fill if already saved
 window.addEventListener('DOMContentLoaded', () => {
   if (SCRIPT_URL) {
-    alert('Event Listener');
     document.getElementById('scriptUrl').value = SCRIPT_URL;
     document.getElementById('urlStatus').textContent = '✅ Google Sheet connected.';
     document.getElementById('urlStatus').className = 'url-status ok';
