@@ -386,7 +386,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter:invert(0.7) sepia
       </ul>
     </div>
     <div style="display:flex;align-items:flex-start;gap:10px;margin-top:14px;">
-      <input type="checkbox" id="payConfirm" style="width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:var(--gold2);cursor:pointer;">
+      <input onclick="saveScriptUrl()" type="checkbox" id="payConfirm" style="width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:var(--gold2);cursor:pointer;">
       <label for="payConfirm" style="text-transform:none;font-size:13px;letter-spacing:0;color:var(--cream);line-height:1.5;cursor:pointer;font-weight:400;">
         I understand I need to send payment via Revolut to <strong style="color:var(--gold)">0894 774 093</strong> to confirm my order.
       </label>
@@ -429,7 +429,9 @@ const LS_KEY = 'deccan_script_url';
 let SCRIPT_URL = localStorage.getItem(LS_KEY) || '';
 
 function saveScriptUrl() {
-  const val = 'https://script.google.com/macros/s/AKfycbya9-daOL8iJ_5Viq6sL98ywnn1a8_1fND5ShFSvkX4n15ykbYZRwC2H_BQSdCePOq0Hw/exec'; //document.getElementById('scriptUrl').value.trim();
+  const val = 'https://script.google.com/macros/s/AKfycbya9-daOL8iJ_5Viq6sL98ywnn1a8_1fND5ShFSvkX4n15ykbYZRwC2H_BQSdCePOq0Hw/exec'; 
+  alert("Url Saved");
+  //document.getElementById('scriptUrl').value.trim();
   const status = document.getElementById('urlStatus');
   if (!val.startsWith('https://script.google.com/macros/s/')) {
     status.textContent = '❌ That doesn\'t look like a valid Apps Script URL. It should start with https://script.google.com/macros/s/…';
