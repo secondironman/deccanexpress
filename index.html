@@ -391,7 +391,7 @@ footer {
 #orderFormRoot .form-card { background:linear-gradient(160deg,var(--dark2) 0%,var(--dark3) 60%,var(--dark2) 100%); border:1.5px solid var(--gold2); border-radius:8px; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,0.6); }
 #orderFormRoot .card-section { padding:20px 22px; border-bottom:1px solid rgba(200,146,42,0.14); }
 #orderFormRoot .card-section:last-child { border-bottom:none; }
-#orderFormRoot .section-title { font-family:'Cinzel Decorative',serif; font-size:10px; letter-spacing:3.5px; color:var(--gold2); margin-bottom:14px; text-transform:uppercase; }
+#orderFormRoot .section-title { font-family:'Cinzel Decorative',serif; font-size:10px; letter-spacing:3.5px; color:var(--gold2); margin-bottom:16px; text-transform:uppercase; }
 #orderFormRoot .field { margin-bottom:14px; }
 #orderFormRoot .field:last-child { margin-bottom:0; }
 #orderFormRoot label { display:block; font-size:11px; letter-spacing:1px; color:rgba(245,232,204,0.55); text-transform:uppercase; margin-bottom:5px; font-weight:700; font-family:'DM Sans',sans-serif; }
@@ -499,7 +499,7 @@ footer {
   <a onclick="showPage('about'); closeMobile()">About Us</a>
   <a onclick="showPage('home'); scrollToMenu(); closeMobile()">Our Menu</a>
   <a onclick="showPage('home'); scrollToContact(); closeMobile()">Contact</a>
-  <a onclick="showPage('order'); closeMobile()" style="color:var(--gold);font-weight:700;">🍛 Pre-Order Now</a>
+  <a onclick="showPage('order'); resetForm(); closeMobile()" style="color:var(--gold);font-weight:700;">🍛 Pre-Order Now</a>
 </div>
 
 <!-- ════════════════════════════════
@@ -568,7 +568,7 @@ footer {
         <button class="btn-ghost" onclick="showPage('about')">Our Full Story →</button>
       </div>
       <div class="photo-block">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Charminar_2018.jpg/800px-Charminar_2018.jpg" alt="Charminar Hyderabad" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Charminar%2C_Hyderabad.jpg/400px-Charminar%2C_Hyderabad.jpg'">
+        <img src="Charminar.jpg" alt="Charminar Hyderabad" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Charminar%2C_Hyderabad.jpg/400px-Charminar%2C_Hyderabad.jpg'">
         <span class="photo-label">Charminar · Hyderabad</span>
       </div>
     </div>
@@ -627,7 +627,7 @@ footer {
     <div class="contact-grid">
       <div class="contact-card">
         <div class="contact-icon">📱</div>
-        <div class="contact-label">WhatsApp / Phone</div>
+        <div class="contact-label">WhatsApp</div>
         <div class="contact-value"><a href="https://wa.me/353894774093">0894 774 093</a></div>
       </div>
       <div class="contact-card">
@@ -672,7 +672,7 @@ footer {
   <div class="section">
     <div class="two-col">
       <div class="photo-block">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Biryani_at_Hyderabad.jpg/800px-Biryani_at_Hyderabad.jpg" alt="Hyderabadi Biryani" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Hyderabadi_Biryani.jpg/400px-Hyderabadi_Biryani.jpg'">
+        <img src="Biryani.jpg" alt="Hyderabadi Biryani" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Hyderabadi_Biryani.jpg/400px-Hyderabadi_Biryani.jpg'">
         <span class="photo-label">Authentic Dum Biryani</span>
       </div>
       <div>
@@ -736,23 +736,9 @@ footer {
       <!-- Sending overlay -->
       <div class="sending-overlay" id="sendingOverlay">
         <div class="spinner"></div>
-        <p>Sending your order… 🍛</p>
+        <p>Sending your order to our kitchen… 🍛</p>
       </div>
 
-      <!-- SETUP PANEL -->
-      <!--div class="setup-banner">
-        <h3>⚙️ One-Time Google Sheets Setup</h3>
-        <ol class="setup-steps">
-          <li><div class="snum">1</div><span>Create a Google Sheet · Extensions → Apps Script → paste the provided script</span></li>
-          <li><div class="snum">2</div><span>Deploy as Web App (Anyone can access) → copy the URL</span></li>
-          <li><div class="snum">3</div><span>Paste the URL below and click Save — orders flow straight to your sheet!</span></li>
-        </ol>
-        <div class="url-input-wrap">
-          <input type="text" id="scriptUrl" placeholder="Paste your Google Apps Script Web App URL…">
-          <button class="save-url-btn" onclick="saveScriptUrl()">Save</button>
-        </div>
-        <div class="url-status" id="urlStatus"></div>
-      </div-->
 
       <!-- DEADLINE -->
       <div class="deadline-banner">
@@ -891,22 +877,23 @@ footer {
 
       </div><!-- /form-card -->
 
-      <!-- SUCCESS -->
-      <div class="success-screen" id="successScreen">
-        <div class="success-icon">🎉</div>
-        <div class="success-title">Order Placed!</div>
-        <div class="success-msg">
-          Thank you, <strong id="suc-name" style="color:#f0c840"></strong>!<br>
-          Pre-order for <strong id="suc-date" style="color:#f0c840"></strong>.<br><br>
-          Send <strong id="suc-total" style="color:#f0c840"></strong> via Revolut to<br>
-          <span style="font-size:20px;font-weight:700;color:#f0c840">📱 @deccanox1k or WhatsApp 0894 774 093</span><br><br>
-          Ref: <em>"Deccan Express – <span id="suc-ref"></span>"</em><br>
-          <span style="font-size:12px;opacity:.6">✅ Saved to Google Sheet</span>
-        </div>
-        <div class="success-ref" id="orderRef"></div>
-        <br><br>
-        <button class="submit-btn" onclick="resetForm()" style="max-width:240px;margin:0 auto;display:block">Another Order</button>
-      </div>
+  
+      <!-- SUCCESS SCREEN -->
+<div class="success-screen" id="successScreen">
+  <div class="success-icon">🎉</div>
+  <div class="success-title">Order Received!</div>
+  <div class="success-msg">
+    Thank you, <strong id="suc-name" style="color:var(--gold)"></strong>!<br>
+    Your pre-order for <strong id="suc-date" style="color:var(--gold)"></strong> is confirmed.<br><br>
+    Please send <strong id="suc-total" style="color:var(--gold)"></strong> via Revolut to<br>
+    <span style="font-size:22px;font-weight:700;color:var(--gold);">📱 @deccanox1k or whatsapp 0894 774 093</span><br><br>
+    Reference: <em>"Deccan Express – <span id="suc-ref"></span>"</em><br><br>
+    <!--span style="font-size:13px;opacity:.7;">✅ Your order has been saved to our Google Sheet.</span-->
+  </div>
+  <div class="success-ref" id="orderRef"></div>
+  <br><br>
+  <button class="submit-btn" onclick="resetForm()" style="max-width:260px;margin:0 auto;display:block;">Place Another Order</button>
+</div>
 
     </div><!-- /orderFormRoot -->
   </div>
