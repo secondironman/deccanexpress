@@ -6,7 +6,7 @@
 
 // ── IMPORTANT: Replace this with your actual Google Sheet ID ──
 // Find it in the URL: docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit
-const SHEET_ID = '1oS9qT4zgKh8LHgvii1Xog78R57_S2E1JE0MCk72a7Gw';
+const SHEET_ID = 'YOUR_GOOGLE_SHEET_ID_HERE';
 
 // Sheet tab name (the tab at the bottom of your spreadsheet)
 const SHEET_NAME = 'Orders';
